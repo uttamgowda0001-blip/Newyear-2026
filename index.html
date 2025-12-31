@@ -1,186 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy New Year Gowthami ❤️</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy New Year Gowthami ❤️</title>
 
-<style>
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: radial-gradient(circle at top, #1a1a40, #000010);
-  color: white;
-  overflow: hidden;
-  text-align: center;
-}
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(circle at top, #1a0033, #000010);
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+    }
 
-/* Sections */
-.section {
-  display: none;
-  height: 100vh;
-  width: 100vw;
-  position: absolute;
-  top: 0;
-  left: 0;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
+    .container {
+      z-index: 2;
+      max-width: 360px;
+      padding: 20px;
+    }
 
-.section.active {
-  display: flex;
-}
+    h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
 
-/* Card */
-.card {
-  background: rgba(255,255,255,0.12);
-  backdrop-filter: blur(10px);
-  padding: 30px 25px;
-  border-radius: 18px;
-  max-width: 380px;
-  box-shadow: 0 0 30px rgba(255,0,100,0.35);
-  z-index: 10;
-}
+    h2 {
+      font-size: 20px;
+      font-weight: normal;
+      margin-bottom: 20px;
+    }
 
-/* Buttons */
-button {
-  padding: 14px 30px;
-  font-size: 16px;
-  border: none;
-  border-radius: 30px;
-  background: linear-gradient(45deg,#ff4d6d,#ff7aa2);
-  color: white;
-  cursor: pointer;
-  margin-top: 25px;
-}
+    .card {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 0 30px rgba(255,0,100,0.3);
+    }
 
-/* Music */
-.music-btn {
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  background: linear-gradient(45deg,#ff4d6d,#ff7aa2);
-  padding: 12px;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 20;
-}
+    p {
+      font-size: 15px;
+      line-height: 1.6;
+    }
 
-/* Signature */
-.signature {
-  margin-top: 18px;
-  font-style: italic;
-  color: #ffd6e5;
-}
+    .signature {
+      margin-top: 20px;
+      font-style: italic;
+      color: #ff9acb;
+    }
 
-/* Falling hearts + fireworks dots */
-.fall {
-  position: fixed;
-  top: -10px;
-  animation: fall linear infinite;
-  z-index: 2;
-  pointer-events: none;
-}
+    button {
+      margin-top: 20px;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      background: linear-gradient(45deg, #ff2f92, #ff8acb);
+      color: white;
+      cursor: pointer;
+    }
 
-@keyframes fall {
-  to {
-    transform: translateY(110vh);
-  }
-}
+    /* Floating emojis */
+    .float {
+      position: fixed;
+      top: -10px;
+      font-size: 24px;
+      animation: fall linear infinite;
+      opacity: 0.9;
+      z-index: 1;
+    }
 
-/* Firework glow */
-.fire {
-  animation: glow 2s infinite alternate;
-}
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+      }
+    }
 
-@keyframes glow {
-  from { text-shadow: 0 0 5px #ff4d6d; }
-  to { text-shadow: 0 0 20px #ff99c8; }
-}
-</style>
+    /* Fireworks */
+    .firework {
+      position: fixed;
+      width: 6px;
+      height: 6px;
+      background: transparent;
+      border-radius: 50%;
+      animation: explode 1.5s infinite;
+    }
+
+    @keyframes explode {
+      0% { box-shadow: none; opacity: 1; }
+      100% {
+        box-shadow:
+          0 0 15px #ff3cac,
+          20px 20px 15px #784ba0,
+          -20px 20px 15px #2b86c5,
+          20px -20px 15px #ffcc70,
+          -20px -20px 15px #ff6a88;
+        opacity: 0;
+      }
+    }
+
+    .music-btn {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      background: #ff2f92;
+      padding: 12px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 3;
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- Music -->
-<audio id="music" loop>
-  <source src="newyear.mp3" type="audio/mpeg">
-</audio>
+  <!-- Music -->
+  <audio id="music" autoplay loop>
+    <source src="newyear.mp3" type="audio/mpeg">
+  </audio>
 
-<div class="music-btn" onclick="toggleMusic()">🎵</div>
+  <div class="music-btn" onclick="toggleMusic()">🎵</div>
 
-<!-- SECTION 1 -->
-<div class="section active" id="s1">
-  <div class="card fire">
-    <h2>✨ Happy New Year ✨</h2>
-    <h3>My Love ❤️</h3>
-    <h2>Gowthami</h2>
-    <button onclick="next(2)">🎆 Tap to Begin 🎆</button>
-  </div>
-</div>
+  <div class="container">
+    <div class="card">
+      <h1>🎆 Happy New Year ❤️</h1>
+      <h2>My Love, Gowthami ✨</h2>
 
-<!-- SECTION 2 -->
-<div class="section" id="s2">
-  <div class="card fire">
-    <h3>New Year… New Feelings 💖</h3>
-    <p>
-      As this new year begins,<br>
-      I want you to know one thing…
-    </p>
-    <button onclick="next(3)">💝 Open My Heart 💝</button>
-  </div>
-</div>
+      <p>
+        A brand new year begins with you in my heart. <br><br>
+        You are my favorite hello, my safest place, and my forever. <br><br>
+        Every dream I carry, every smile I wear,
+        begins with your name. <br><br>
+        May this New Year bring us closer,
+        stronger, and endlessly in love. 💖
+      </p>
 
-<!-- SECTION 3 -->
-<div class="section" id="s3">
-  <div class="card fire">
-    <h3>Happy New Year ❤️</h3>
-    <p>
-      Gowthami,<br><br>
-      This new year, I don’t wish for miracles,<br>
-      because **you** are already one in my life.<br><br>
-      I wish for more laughs with you,<br>
-      more late-night talks,<br>
-      more memories that belong only to us.<br><br>
-      No matter what this year brings,<br>
-      I want to walk into it… **with you** 💖<br><br>
-      <b>Happy New Year, my love ✨</b>
-    </p>
-    <div class="signature">
-      — With all my heart ❤️
+      <p><b>Happy New Year, my everything 🎁✨</b></p>
+
+      <div class="signature">
+        — From your husband ❤️
+      </div>
     </div>
   </div>
-</div>
 
-<script>
-/* Section switch */
-function next(n){
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.getElementById('s'+n).classList.add('active');
-}
+  <script>
+    /* Floating emojis generator */
+    const emojis = ["❤️","💖","✨","🎆","🎇","💫","🎁","😍"];
+    for (let i = 0; i < 35; i++) {
+      let e = document.createElement("div");
+      e.className = "float";
+      e.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+      e.style.left = Math.random() * 100 + "vw";
+      e.style.animationDuration = (4 + Math.random() * 4) + "s";
+      e.style.fontSize = (18 + Math.random() * 14) + "px";
+      document.body.appendChild(e);
+    }
 
-/* Romantic New Year fall mix */
-const icons = ["❤️","💖","✨","🎆","🎇","🥂"];
+    /* Fireworks */
+    for (let i = 0; i < 6; i++) {
+      let f = document.createElement("div");
+      f.className = "firework";
+      f.style.left = Math.random() * 100 + "vw";
+      f.style.top = Math.random() * 50 + "vh";
+      document.body.appendChild(f);
+    }
 
-for(let i = 0; i < 45; i++){
-  let el = document.createElement("div");
-  el.className = "fall";
-  el.innerHTML = icons[Math.floor(Math.random() * icons.length)];
-  el.style.left = Math.random() * 100 + "vw";
-  el.style.fontSize = (18 + Math.random() * 18) + "px";
-  el.style.animationDuration = (4 + Math.random() * 6) + "s";
-  el.style.opacity = Math.random();
-  document.body.appendChild(el);
-}
-
-/* Music toggle */
-function toggleMusic(){
-  let m = document.getElementById("music");
-  if(m.paused) m.play();
-  else m.pause();
-}
-</script>
+    function toggleMusic(){
+      let m = document.getElementById("music");
+      if (m.paused) m.play();
+      else m.pause();
+    }
+  </script>
 
 </body>
 </html>
